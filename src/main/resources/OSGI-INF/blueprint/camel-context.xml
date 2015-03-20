@@ -5,9 +5,9 @@
                    "http://www.osgi.org/xmlns/blueprint/v1.0.0
              http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd">
 
-  <bean id="cXFTestRoutes" class="com.sodasmile.jbossfuse.hellofuse.HelloRouteBuilder"/>
+  <bean id="helloRouteBuilder" class="com.sodasmile.jbossfuse.hellofuse.HelloRouteBuilder"/>
 
   <camelContext id="camel" xmlns="http://camel.apache.org/schema/blueprint">
-    <routeBuilder ref="cXFTestRoutes"/>
+    <routeBuilder ref="helloRouteBuilder"/>
   </camelContext>
 </blueprint>
