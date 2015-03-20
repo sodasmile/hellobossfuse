@@ -18,6 +18,5 @@ public class HelloRouteBuilderBluePrintTest  extends CamelBlueprintTestSupport {
     @Test
     public void testName() throws Exception {
         directTimerTrigged.sendBody(null);
-
     }
 }

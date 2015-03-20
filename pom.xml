@@ -14,17 +14,19 @@
     <packaging>bundle</packaging>
 
     <properties>
-        <camel-version>2.12.0</camel-version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <jdk.version>1.7</jdk.version>
         <maven-bundle-plugin.version>2.3.7</maven-bundle-plugin.version>
         <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
         <jboss.fuse.bom.version>6.1.0.redhat-379</jboss.fuse.bom.version>
-        <activemq-version>5.9.0</activemq-version>
-        <fuse-version>redhat-610379</fuse-version>
-        <javaee-version>7.0</javaee-version>
+
+        <!-- Or inherit from org.jboss.fuse.bom:jboss-fuse-parent:jboss.fuse.bom.version:pom -->
+        <camel-version>2.12.0.redhat-610379</camel-version>
+        <junit-version>4.11</junit-version>
+        <logback-version>1.0.0</logback-version>
     </properties>
 
+<!--
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -36,87 +38,22 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+-->
 
     <dependencies>
-        <!-- assuming camel is pulling aries 1.0.0, pull asm 4.0 first -->
-        <dependency>
-            <groupId>org.ow2.asm</groupId>
-            <artifactId>asm-all</artifactId>
-            <version>4.0</version>
-            <scope>test</scope>
-        </dependency>
 
         <!-- Camel -->
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-blueprint</artifactId>
+            <version>${camel-version}</version>
             <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.camel</groupId>
-            <artifactId>camel-ftp</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.camel</groupId>
-            <artifactId>camel-saxon</artifactId>
-        </dependency>
-
-        <!-- sftp -->
-        <dependency>
-            <groupId>com.jcraft</groupId>
-            <artifactId>jsch</artifactId>
-            <version>0.1.50</version>
-        </dependency>
-
-        <!-- ActiveMQ connectivity for Camel -->
-        <dependency>
-            <groupId>org.apache.activemq</groupId>
-            <artifactId>activemq-blueprint</artifactId>
-            <version>${activemq-version}.${fuse-version}</version>
-            <scope>provided</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.ops4j.pax.logging</groupId>
-                    <artifactId>pax-logging-api</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.ops4j.pax.logging</groupId>
-                    <artifactId>pax-logging-service</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-
-        <!-- JMS -->
-        <dependency>
-            <groupId>org.apache.activemq</groupId>
-            <artifactId>activemq-core</artifactId>
-            <version>5.5.0</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>javax</groupId>
-            <artifactId>javaee-api</artifactId>
-            <version>${javaee-version}</version>
-        </dependency>
-
-        <!-- Testing -->
-
-        <!-- CXF -->
-        <dependency>
-            <groupId>org.apache.camel</groupId>
-            <artifactId>camel-cxf</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.camel</groupId>
-            <artifactId>camel-http</artifactId>
-            <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-test-blueprint</artifactId>
-            <version>2.12.0</version>
+            <version>${camel-version}</version>
             <scope>test</scope>
             <exclusions>
                 <exclusion>
@@ -133,52 +70,16 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.11</version>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>commons-io</groupId>
-            <artifactId>commons-io</artifactId>
-            <version>2.4</version>
-            <scope>test</scope>
+            <version>${junit-version}</version>
         </dependency>
 
-
-        <dependency>
-            <groupId>org.apache.cxf</groupId>
-            <artifactId>cxf-rt-transports-http</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.cxf</groupId>
-            <artifactId>cxf-rt-transports-http-jetty</artifactId>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.activemq</groupId>
-            <artifactId>activemq-camel</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.camel</groupId>
-            <artifactId>camel-base64</artifactId>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.camel</groupId>
-            <artifactId>camel-jetty</artifactId>
-            <scope>test</scope>
-        </dependency>
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>1.0.13</version>
+            <version>${logback-version}</version>
             <scope>test</scope>
         </dependency>
-
-
     </dependencies>
 
     <build>
