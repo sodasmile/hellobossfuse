@@ -18,5 +18,10 @@
 
     <camelContext id="camel" xmlns="http://camel.apache.org/schema/blueprint">
         <routeBuilder ref="helloRouteBuilder"/>
+<!--    Will not work with fuse?? Blueprint?? Why won't it work??!
+        <packageScan>
+            <package>com.sodasmile.jbossfuse</package>
+        </packageScan>
+-->
     </camelContext>
 </blueprint>
