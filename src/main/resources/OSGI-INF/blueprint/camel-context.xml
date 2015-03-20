@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+           xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.0.0"
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-           xsi:schemaLocation=
-                   "http://www.osgi.org/xmlns/blueprint/v1.0.0
-             http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd">
+           xsi:schemaLocation="
+           http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+           ">
 
-  <bean id="helloRouteBuilder" class="com.sodasmile.jbossfuse.hellofuse.HelloRouteBuilder"/>
+    <cm:property-placeholder id="hvdc.fuse.properties" persistent-id="no.statnett.larm.hvdc.fuse.sterling">
+        <cm:default-properties>
+            <!-- Error handler -->
+            <cm:property name="property1" value="property1-verdi"/>
+        </cm:default-properties>
+    </cm:property-placeholder>
 
-  <camelContext id="camel" xmlns="http://camel.apache.org/schema/blueprint">
-    <routeBuilder ref="helloRouteBuilder"/>
-  </camelContext>
+    <bean id="helloRouteBuilder" class="com.sodasmile.jbossfuse.hellofuse.HelloRouteBuilder"/>
+
+    <camelContext id="camel" xmlns="http://camel.apache.org/schema/blueprint">
+        <routeBuilder ref="helloRouteBuilder"/>
+    </camelContext>
 </blueprint>

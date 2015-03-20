@@ -14,7 +14,7 @@ public class HelloRouteBuilder extends RouteBuilder {
         logger.info("Configuring HelloRoute!");
         from("timer:routeBuilderTimer?period=3s")
                 .routeId("recurrentLoggingRoute")
-                .log(LoggingLevel.INFO, "en melding fra route builder");
+                .log(LoggingLevel.INFO, "en melding fra route builder {{property1}}");
     }
 }
 
