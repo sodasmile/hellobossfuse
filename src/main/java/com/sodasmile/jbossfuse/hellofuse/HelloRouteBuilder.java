@@ -12,7 +12,11 @@ public class HelloRouteBuilder extends RouteBuilder {
 
     public void configure() throws Exception {
         logger.info("Configuring HelloRoute!");
+
         from("timer:routeBuilderTimer?period=3s")
+                .to("direct:timerTriggered");
+
+        from("direct:timerTriggered")
                 .routeId("recurrentLoggingRoute")
                 .log(LoggingLevel.INFO, "en melding fra route builder {{property1}}");
     }
